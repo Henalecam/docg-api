@@ -49,7 +49,7 @@ const Servico = sequelize.define(
       allowNull: false,
     },
     preco: {
-      type: Sequelize.FLOAT,
+      type: Sequelize.DECIMAL,
       allowNull: false,
     },
   },
