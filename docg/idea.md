@@ -1,5 +1,7 @@
 API clientes
 
+Timestamps
+
 ## Cliente: (has many)
 
 Id,
@@ -8,7 +10,7 @@ E-mail,
 Telefone,
 Pets
 
-## Pet: (belongs to)
+## Pet: (Many to one)
 
 Id,
 Cliente_id,
@@ -21,7 +23,7 @@ Raça
 Id,
 Cliente_id,
 Pet_id,
-Tech_id
+Serviço_id
 
 ## Serviço: (many to many)
 
