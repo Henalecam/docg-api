@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await (queryInterface.createTable('pets', {
+    await queryInterface.createTable('pets', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -40,12 +40,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-    }),
-    queryInterface.addConstraint('pets', {
-      type: 'unique',
-      fields: ['client_id', 'name'],
-      name: 'UNIQUE_PET_CLIENT_NAME',
-    }));
+    });
   },
 
   async down(queryInterface, Sequelize) {

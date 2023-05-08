@@ -7,7 +7,6 @@ class Client extends Model {
         name: DataTypes.STRING,
         email: DataTypes.STRING,
         phone: DataTypes.STRING,
-        pets_id: DataTypes.INTEGER,
       },
       {
         sequelize,
