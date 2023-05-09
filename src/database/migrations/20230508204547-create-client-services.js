@@ -13,44 +13,26 @@ module.exports = {
       client_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'clients',
-          key: 'id',
-        },
+        references: { model: 'clients', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
       pet_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'clients',
-          key: 'id',
-        },
+        references: { model: 'pets', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
       service_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'services',
-          key: 'id',
-        },
+        references: { model: 'services', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      updated_at: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
     });
   },
-
   async down(queryInterface, Sequelize) {
     return queryInterface.dropTable('client_services');
   },

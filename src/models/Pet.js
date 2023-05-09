@@ -15,6 +15,11 @@ class Pet extends Model {
   }
   static associate(models) {
     this.belongsTo(models.Client, { foreignKey: 'client_id', as: 'client' });
+    this.belongsToMany(models.Service, {
+      foreignKey: 'pet_id',
+      through: 'pet_services',
+      as: 'services',
+    });
   }
 }
 

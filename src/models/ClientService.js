@@ -4,6 +4,7 @@ class Client_services extends Model {
   static init(sequelize) {
     super.init(
       {
+        client_id: DataTypes.INTEGER,
         pet_id: DataTypes.INTEGER,
         service_id: DataTypes.INTEGER,
       },
@@ -21,3 +22,5 @@ class Client_services extends Model {
     });
   }
 }
+
+module.exports = Client_services;

@@ -18,5 +18,6 @@ routes.post('/services', ServiceController.store);
 
 routes.get('/clients/:client_id/services', ClientServiceController.index);
 routes.post('/clients/:client_id/services', ClientServiceController.store);
+routes.delete('/clients/:client_id/services', ClientServiceController.delete);
 
 module.exports = routes;
