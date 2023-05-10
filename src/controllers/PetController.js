@@ -6,6 +6,9 @@ module.exports = {
     const client = await Client.findByPk(client_id, {
       include: { association: 'pets' },
     });
+    if (!client) {
+      return res.status(400).json({ error: 'Client not found' });
+    }
     return res.json(client.pets);
   },
   async store(req, res) {
@@ -22,5 +25,14 @@ module.exports = {
       client_id,
     });
     return res.json(pet);
+  },
+  async delete(req, res) {
+    const { pet_id } = req.params;
+    const pet = await Pet.findByPk(pet_id);
+    if (!pet) {
+      return res.status(400).json({ error: 'Pet not found' });
+    }
+    await pet.destroy();
+    return res.status(204).send();
   },
 };

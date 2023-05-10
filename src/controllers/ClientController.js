@@ -12,4 +12,13 @@ module.exports = {
     const client = await Client.create({ name, email, phone });
     return res.json(client);
   },
+  async delete(req, res) {
+    const { client_id } = req.params;
+    const client = await Client.findByPk(client_id);
+    if (!client) {
+      return res.status(400).json({ error: 'Client not found' });
+    }
+    await client.destroy();
+    return res.status(204).send();
+  },
 };

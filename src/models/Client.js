@@ -15,10 +15,9 @@ class Client extends Model {
   }
   static associate(models) {
     this.hasMany(models.Pet, { foreignKey: 'client_id', as: 'pets' });
-    this.belongsToMany(models.Service, {
+    this.hasMany(models.Transaction, {
       foreignKey: 'client_id',
-      through: 'client_services',
-      as: 'services',
+      as: 'transactions',
     });
   }
 }

@@ -3,37 +3,55 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('client_services', {
+    return queryInterface.createTable('transactions', {
       id: {
         type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
         allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      service_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'services',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       client_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'clients', key: 'id' },
+        references: {
+          model: 'clients',
+          key: 'id',
+        },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
       pet_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'pets', key: 'id' },
+        references: {
+          model: 'pets',
+          key: 'id',
+        },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      service_id: {
-        type: Sequelize.INTEGER,
+      created_at: {
+        type: Sequelize.DATE,
         allowNull: false,
-        references: { model: 'services', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
-    return queryInterface.dropTable('client_services');
+    return queryInterface.dropTable('services_transactions');
   },
 };
