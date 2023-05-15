@@ -17,6 +17,7 @@ routes.delete('/pets/:pet_id', PetController.delete);
 
 routes.get('/services', ServiceController.index);
 routes.post('/services', ServiceController.store);
+routes.delete('/services', ServiceController.delete);
 
 routes.get('/clients/:client_id/transactions', TransactionController.index);
 routes.post('/clients/:client_id/transactions', TransactionController.store);

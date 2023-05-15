@@ -33,4 +33,13 @@ module.exports = {
     });
     return res.json(transaction);
   },
+  async delete(req, res) {
+    const { transaction_id } = req.params;
+    const transaction = await Transaction.findByPk(transaction_id);
+    if (!transaction) {
+      return res.status(400).json({ error: 'Transaction not found' });
+    }
+    await transaction.destroy();
+    return res.status(204).send();
+  },
 };
